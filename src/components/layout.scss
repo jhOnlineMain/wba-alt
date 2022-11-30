@@ -1,0 +1,53 @@
+//Here you can customize bootstrap
+$primary: #663399;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#gatsby-focus-wrapper {
+  background: #f7f7f7;
+}
+
+.ladder-headings {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+display: flex;
+  label {
+    color: #00B6B5;
+    font-weight: 900;
+    flex-basis: 20%;
+    padding: 1rem;
+    font-size: 19px;
+  }
+}
+
+
+.ladder-result {
+  background: #fff;
+  border-top: 2px solid #f7f7f7;
+  background: #fff;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-between;
+  text-align: left;
+  flex-wrap: wrap;
+
+  label {
+    color: #000;
+    font-weight: 900;
+    font-size: 22px;
+    flex-basis: 20%;
+    padding: 1rem;
+  }
+}
+
+
+.h2divider {
+    padding-left: 1rem;
+    padding-top: 2rem;
+}
+.navbar {
+  display: none !important;
+}
