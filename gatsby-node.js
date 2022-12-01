@@ -7,15 +7,6 @@
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-// exports.createPages = async ({ actions }) => {
-//   const { createPage } = actions
-//   createPage({
-//     path: "/using-dsg",
-//     component: require.resolve("./src/templates/using-dsg.js"),
-//     context: {},
-//     defer: true,
-//   })
-// }
 
 require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`
@@ -179,3 +170,68 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
 
     });
 };
+// const {graphql} = require('gatsby')
+// const path = require(`path`)
+
+// exports.createPages = async gatsbyUtilities => {
+
+//   const pages = await getPages(gatsbyUtilities)
+
+//   if (!pages.length) {
+//     return
+//   }
+
+//   await createPages({ pages, gatsbyUtilities})
+// }
+
+//   const createPages = async ( {pages, gatsbyUtilities}) => { 
+
+//     Promise.all(
+//       pages.map( ( {page} ) => 
+//         gatsbyUtilities.actions.createPage({
+//           path: page.uri,
+//           component: path.resolve(`./src/templates/page.js`),
+//           // values in the context object are passed in as variables to page queries
+//           context: {
+//             title: page.title, // "Using a Theme"
+//             slug: page.slug,
+//             components: page.components.componentsUsed
+//           },
+//         })
+//       )
+//     )
+// }
+  
+
+
+// async function getPages({ graphql, reporter }) {
+//   const pagesQuery = await graphql(/* GraphQL */ `
+//     query Pages {
+//         allWpPage {
+//             nodes {
+//                 id
+//                 slug
+//                 title
+//                 uri
+//                 components {
+//                     componentsUsed
+//                 }
+//             }
+//   }
+//     }
+//   `)
+  
+//   if (pagesQuery.errors) {
+//     reporter.panicOnBuild(
+//       `There was an error loading your blog posts`,
+//       console.log(pages),
+//       pagesQuery.errors
+//     )
+//     return
+//   }
+
+//    return pagesQuery.data.allWpPage.nodes
+
+// }
+
+

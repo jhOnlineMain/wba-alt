@@ -1,26 +1,37 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-const people = [
-  {
-    name: 'Andrew Summerville',
-    role: 'Chief Executive Officer',
-    imageUrl:
-      'https://www-static.spulsecdn.net/pics/00/36/79/58/36795882_1_M.jpg',
-  },
-  // More people...
-]
-const Team = () => (
+import { StaticImage } from "gatsby-plugin-image"
+
+  
+const Team = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      wpComponent(slug: {eq: "team"}) {
+        team {
+          heading
+          description
+          members {
+            name
+            role
+          }
+        }
+      }
+}
+  
+  `)
+  const qry = data.wpComponent.team
+  const people = qry.members
+  return (
   <div className="bg-white">
      <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
          <div className="space-y-5 sm:space-y-4">
-           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Meet our leadership</h2>
+           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{qry.heading}</h2>
            <p className="text-xl text-gray-500">
-             Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper
-             suspendisse. Vivamus fringilla.
+             {qry.description}
            </p>
          </div>
          <div className="lg:col-span-2">
@@ -28,10 +39,10 @@ const Team = () => (
              {people.map((person) => (
                <li key={person.name}>
                  <div className="flex items-center space-x-4 lg:space-x-6">
-                   <img className="w-16 h-16 rounded-full lg:w-20 lg:h-20" src={person.imageUrl} alt="" />
+                   <StaticImage  imgClassName="w-8 h-8 rounded-full lg:w-20 lg:h-20" src="https://www-static.spulsecdn.net/pics/00/36/79/58/36795882_1_M.jpg" alt="" />
                    <div className="font-medium text-lg leading-6 space-y-1">
                      <h3>{person.name}</h3>
-                     <p className="text-indigo-600">{person.role}</p>
+                     <p className="text-green-800">{person.role}</p>
                    </div>
                  </div>
                </li>
@@ -41,8 +52,7 @@ const Team = () => (
        </div>
      </div>
    </div>
-
-
-)
+  )
+}
 
 export default Team

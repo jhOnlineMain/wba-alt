@@ -13,7 +13,7 @@ const ExactNavLink = props => (
 
 const Navbar = ({ siteTitle }) => {
   return (
-    <div className="navbar bg-green-800 drop-shadow-md">
+    <div id="navbar" className="navbar bg-green-800 drop-shadow-md">
     <div className="flex-1">
       <a className="btn btn-ghost normal-case text-xl text-white"><Link to="/" className="text-white" activeStyle={{ color: "blue" }}>  <StaticImage
           src="../images/wolveslogo.png"

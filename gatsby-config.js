@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `http://wpsourcegutenberg.local/graphql`,
+        url: `http://wba.local/graphql`,
       },
     },
     // {
