@@ -3,10 +3,8 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 import { StaticImage } from "gatsby-plugin-image"
 
-const BrandPanel = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      wpComponent(slug: {eq: "brand-panel"}) {
+const BrandPanel = (props) => {
+/* Expects from parent 
         brandPanel {
           heading
           subHeading
@@ -17,12 +15,10 @@ const BrandPanel = () => {
             link
           }
         }
-      }
-    }
-  `)
-  const qry = data.wpComponent.brandPanel
+*/
+  const qry = props[0]
   return (
-  <div className="relative bg-green-800">
+  <div className={"relative bg-" + String() + "-800"}>
      <div className="h-56 bg-green-900 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
        <StaticImage
          className="w-full h-full object-cover"
