@@ -21,6 +21,9 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: `http://wba.local/graphql`,
+        html: {
+          useGatsbyImage: true,
+        },
       },
     },
     // {

@@ -1,27 +1,31 @@
 import * as React from "react"
-import { Link, GatsbyImage } from "gatsby"
+import { Link, GatsbyImage, graphql } from "gatsby"
+import { gql } from '@apollo/client'
+
+
 
 export function HeroSplit(props) {
+  console.log(props)
   const qry = props[0]
   const color1 = props.c1
   
 
 return (
-  /* Expects 
+  /* Expects from parent
      hero {
-                ... on WpPage_Components_Hero_Split{
-                description
-                headingLine1
-                headingLine2
-                buttons {
-                    label
-                    link
-                }
-                backgroundImage {
-                    sourceUrl
-                    altText
-                }
-                }
+        ... on WpPage_Components_Hero_Split{
+        description
+        headingLine1
+        headingLine2
+        buttons {
+            label
+            link
+        }
+        backgroundImage {
+            sourceUrl
+            altText
+        }
+        }
             }
 */
 <div id="hero" className="lg:relative">
@@ -66,13 +70,30 @@ return (
 }
 
 export function HeroCard(props)  {
+  /* Expects from parent
+     hero {
+        ... on WpPage_Components_Hero_Card{
+        description
+        headingLine1
+        headingLine2
+        buttons {
+            label
+            link
+        }
+        backgroundImage {
+            sourceUrl
+            altText
+        }
+        }
+            }
+*/
     
   const qry = props[0]
   const color1 = props.c1
   const color2 = props.c2
 
-  const buttons = (qry, color1) => {
-
+  let buttons = (qry, color1) => {
+    return (
       qry.buttons.map ((button) => (
 
         <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid ">
@@ -83,7 +104,7 @@ export function HeroCard(props)  {
               {button.label}
           </Link>
       </div>
-
+    )
 
       ))
   }
@@ -119,3 +140,37 @@ export function HeroCard(props)  {
 </div>
   )
 }
+
+export const HERO_CARD_FIELDS = graphql`
+ fragment HeroCardFields on WpPage_Components_Hero_Card {
+        description
+        headingLine1
+        headingLine2
+        buttons {
+          label
+          link
+        }
+        backgroundImage {
+          sourceUrl
+          altText
+        }
+
+	}  
+`
+
+export const HERO_SPLIT_FIELDS = graphql`
+ fragment HeroSplitFields on WpPage_Components_Hero_Split {
+        description
+        headingLine1
+        headingLine2
+        buttons {
+          label
+          link
+        }
+        backgroundImage {
+          sourceUrl
+          altText
+        }
+
+	}  
+`

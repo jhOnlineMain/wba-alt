@@ -5,7 +5,6 @@ import HeaderNew from "../components/headernew"
 import Team from "../components/team"
 import BrandPanel from "../components/brandpanel"
 import Stat from "../components/stat"
-import { Hero} from "../components/hero"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -14,12 +13,10 @@ const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=de
 const IndexPage = () => (
   <Layout>
 
-    <Hero />
+
     <Stat />
 
     <Team />
-
-    <BrandPanel />
 
   </Layout>
 )

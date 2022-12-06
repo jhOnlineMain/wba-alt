@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@apollo/client": "^3.7.1",
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "v1",
     "gatsby": "^5.2.0",
@@ -15,6 +16,7 @@
     "gatsby-source-filesystem": "^5.2.0",
     "gatsby-source-wordpress": "^7.0.0",
     "gatsby-transformer-sharp": "^5.2.0",
+    "html-react-parser": "^3.0.4",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

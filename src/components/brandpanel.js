@@ -3,23 +3,31 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import { ExternalLinkIcon } from '@heroicons/react/solid'
 import { StaticImage } from "gatsby-plugin-image"
 
-const BrandPanel = (props) => {
-/* Expects from parent 
-        brandPanel {
-          heading
-          subHeading
-          fieldGroupName
-          description
-          button {
-            label
-            link
-          }
-        }
-*/
+export function BrandPanel(props) {
+  let buttons = (qry, color1) => {
+    return (
+    qry.buttons.map ((button) => (
+     
+      <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid ">
+        <Link
+        to={button.link}
+        className={"flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-" + String(color1) + "-700 bg-white hover:bg-indigo-50 sm:px-8"}
+        >
+            {button.label}
+        </Link>
+    </div>
+    )
+
+
+
+    ))
+}
   const qry = props[0]
+  const color1 = props.c1
+  
   return (
-  <div className={"relative bg-" + String() + "-800"}>
-     <div className="h-56 bg-green-900 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+  <div className={"relative bg-"+ String(color1) +"-800"}>
+     <div className={"h-56 bg-"+ String(color1) +"-900 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2"}>
        <StaticImage
          className="w-full h-full object-cover"
          src="https://www-static2.spulsecdn.net/pics/00/36/79/90/36799088_1_L.jpg"
@@ -35,15 +43,7 @@ const BrandPanel = (props) => {
         
          </p>
          <div className="mt-8">
-           <div className="inline-flex rounded-md shadow">
-             <Link
-               to={qry.button.link}
-               className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
-             >
-               {qry.button.label}
-               <ExternalLinkIcon className="-mr-1 ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
-             </Link>
-           </div>
+           { buttons(qry, color1) }
          </div>
        </div>
      </div>
@@ -51,4 +51,14 @@ const BrandPanel = (props) => {
   )
 }
 
-export default BrandPanel
+export const BRANDPANEL_DEFAULT_FIELDS = graphql`
+  fragment BrandPanelDefaultFields on WpPage_Components_BrandPanel_Default {
+    heading
+    subHeading
+    description
+    buttons {
+      label
+      link
+    }
+  }
+`
