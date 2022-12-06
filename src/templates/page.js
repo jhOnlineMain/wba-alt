@@ -6,26 +6,25 @@ import parse from "html-react-parser"
 
 
 
-const PageTemplate = ( pageQuery ) => {
-
-    const contextData = pageQuery.data.wpPage
-   
+export default function PageTemplate({data}) {
+    console.log(data)
+    const post = data.wpPost
+  
     return (
         <Layout>
-            <Seo title={contextData.title} ></Seo>
-            <h5> {contextData.title} </h5>
-            <p> { parse(contextData.content) } </p>
+            <Seo title={post.title} ></Seo>
+            <div className="w-1/2 mx-auto" >
+                <h5> {post.title} </h5>
+                <p> { parse(post.content) } </p>
+            </div>
         </Layout>
 
     )
 }
 
-export default PageTemplate
-
-export const pageQuery = graphql`
-     query PageBySlug($slug: String!) {
-        wpPage(slug: { eq: $slug }) {
-            slug
+export const query = graphql`
+     query ($slug: String!) {
+        wpPost(slug: { eq: $slug }) {
             content
             title
 

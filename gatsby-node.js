@@ -171,77 +171,70 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
     });
 };
 
-// exports.createSchemaCustomization = ({ actions }) => {
-//     const { createTypes } = actions
-//     const typeDefs = `
-//       type Component implements Node {
-        
-//       }
-//     `
-//     createTypes(typeDefs)
-//   }
-// const {graphql} = require('gatsby')
-// const path = require(`path`)
+const {graphql} = require('gatsby')
+const path = require(`path`)
 
-// exports.createPages = async gatsbyUtilities => {
+exports.createPages = async gatsbyUtilities => {
 
-//   const pages = await getPages(gatsbyUtilities)
+  const pages = await getPages(gatsbyUtilities)
+  console.log('pages:  ')
+  console.log(pages)
 
-//   if (!pages.length) {
-//     return
-//   }
+  if (!pages.length) {
+    console.log('pages=false')
+    return
+    
+  }
 
-//   await createPages({ pages, gatsbyUtilities})
-// }
+  await createPages(pages, {gatsbyUtilities})
+}
 
-//   const createPages = async ( {pages, gatsbyUtilities}) => { 
+  const createPages = async ( pages, {gatsbyUtilities}) => { 
+    console.log('createPages pages:   ')
+    console.log(pages)
 
-//     Promise.all(
-//       pages.map( ( {page} ) => 
-//         gatsbyUtilities.actions.createPage({
-//           path: page.uri,
-//           component: path.resolve(`./src/templates/page.js`),
-//           // values in the context object are passed in as variables to page queries
-//           context: {
-//             title: page.title, // "Using a Theme"
-//             slug: page.slug,
-//             components: page.components.componentsUsed
-//           },
-//         })
-//       )
-//     )
-// }
+    Promise.all(
+      pages.map( ( page ) => 
+        gatsbyUtilities.actions.createPage({
+          path: page.uri,
+          component: path.resolve(`./src/templates/page.js`),
+          // values in the context object are passed in as variables to page queries
+          context: {
+            title: page.title, 
+            slug: page.slug,
+          },
+        })
+      )
+    )
+}
   
 
 
-// async function getPages({ graphql, reporter }) {
-//   const pagesQuery = await graphql(/* GraphQL */ `
-//     query Pages {
-//         allWpPage {
-//             nodes {
-//                 id
-//                 slug
-//                 title
-//                 uri
-//                 components {
-//                     componentsUsed
-//                 }
-//             }
-//   }
-//     }
-//   `)
+async function getPages({ graphql, reporter }) {
+  const pagesQuery = await graphql(/* GraphQL */ `
+    query Pages {
+        allWpPost(filter: {categories: {nodes: {elemMatch: {slug: {eq: "content"}}}}}) {
+            nodes {
+                slug
+                uri
+                title
+            }
+        }
+    }
+  `)
   
-//   if (pagesQuery.errors) {
-//     reporter.panicOnBuild(
-//       `There was an error loading your blog posts`,
-//       console.log(pages),
-//       pagesQuery.errors
-//     )
-//     return
-//   }
+  if (pagesQuery.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      console.log(pages),
+      pagesQuery.errors
+    )
+    return
+  }
+    console.log('pagesQuery:  ')
+    console.log(pagesQuery)
+    return pagesQuery.data.allWpPost.nodes
 
-//    return pagesQuery.data.allWpPage.nodes
-
-// }
+}
 
 

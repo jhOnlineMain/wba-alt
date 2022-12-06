@@ -15,14 +15,17 @@ const Navbar = ({ siteTitle }) => {
   return (
     <div id="navbar" className="navbar bg-green-800 drop-shadow-md">
     <div className="flex-1">
-      <a className="btn btn-ghost normal-case text-xl text-white"><Link to="/" className="text-white" activeStyle={{ color: "blue" }}>  <StaticImage
-          src="../images/wolveslogo.png"
-          width={100}
-          quality={95}
-          formats={["AUTO", "WEBP"]}
-          alt="A Gatsby astronaut"
-          className="bg-contain"
-        /></Link></a>
+      <a className="btn btn-ghost normal-case text-xl text-white">
+        <Link to="/" className="text-white" activeStyle={{ color: "blue" }}>  
+          <StaticImage
+            src="../images/wolveslogo.png"
+            width={100}
+            // quality={95}
+           // formats={["AUTO", "WEBP"]}
+            alt="A Gatsby astronaut"
+            className="bg-contain"
+          />
+        </Link></a>
     </div>
     <div className="flex-none">
       <ul className="menu menu-horizontal p-0 true-gray-50">

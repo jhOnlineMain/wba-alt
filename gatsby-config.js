@@ -24,6 +24,11 @@ module.exports = {
         html: {
           useGatsbyImage: true,
         },
+        schema : { 
+          perPage: 50,
+          timeout: 60000,
+
+        },
       },
     },
     // {

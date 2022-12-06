@@ -41,12 +41,6 @@ const Home = () => {
         <HeroSplit {...blocks.hero} c1="green" />
 
         <BrandPanel {...blocks.brandPanel} c1="green" />
-
-        {posts.map((post) => (
-          <div className="post">
-            {parse(post.content)}
-          </div>
-        ))}
         
         </Layout>
 
