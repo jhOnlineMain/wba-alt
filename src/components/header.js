@@ -142,6 +142,13 @@ export default function Header() {
         link
       }
     }
+    camp: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "camp"}}}}}) {
+      nodes {
+        title
+        link
+      }
+    }
+    
     
   }
     
