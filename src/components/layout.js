@@ -5,7 +5,7 @@ import Footer from "./footer"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
-import HeaderNew from "./headernew"
+import Header from "./header"
 import MegaMenu from "./megamenu"
 
 
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="container-fluid p-0">
-        <Navbar />
+        <Header />
         <main>
           {children}
         </main>
