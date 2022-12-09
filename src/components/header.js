@@ -22,6 +22,9 @@ import {
     XIcon,
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import { TextLinksPanel } from './navPanels'
+
+//--------------------------------------------------------This is a development test page
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -149,10 +152,10 @@ export default function Header() {
       }
     }
     
-    
   }
     
     `)
+
     const menu = {
         wba: data.wba.nodes,
         edu: data.edu.nodes,
@@ -225,7 +228,7 @@ export default function Header() {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 -translate-y-1"
                       >
-                        <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
+                        {/* <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
                           <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                             {solutions.map((item) => (
                               <Link
@@ -267,7 +270,7 @@ export default function Header() {
                               ))}
                             </div>
                           </div>
-                        </Popover.Panel>
+                        </Popover.Panel> */}
                       </Transition>
                     </>
                   )}
