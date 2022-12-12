@@ -7,7 +7,7 @@ export function BrandPanel(props) {
   let buttons = (qry, color1) => {
     return (
     qry.buttons.map ((button) => (
-     
+
       <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid ">
         <Link
         to={button.link}
@@ -24,7 +24,7 @@ export function BrandPanel(props) {
 }
   const qry = props[0]
   const color1 = props.c1
-  
+
   return (
   <div className={"relative bg-"+ String(color1) +"-800"}>
      <div className={"h-56 bg-"+ String(color1) +"-900 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2"}>
@@ -40,7 +40,7 @@ export function BrandPanel(props) {
          <p className="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">{qry.subHeading}</p>
          <p className="mt-3 text-lg text-gray-300">
           {qry.description}
-        
+
          </p>
          <div className="mt-8">
            { buttons(qry, color1) }

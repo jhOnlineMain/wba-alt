@@ -21,7 +21,7 @@ const Home = () => {
         ...BrandPanelDefaultFields
       }
     }
-    
+
   }
   allWpPost(filter: {categories: {nodes: {elemMatch: {slug: {eq: "content"}}}}}) {
     nodes {
@@ -30,7 +30,7 @@ const Home = () => {
       title
     }
   }
-  
+
 }
 `)
   const blocks = query.wpPage.components
@@ -48,7 +48,7 @@ const Home = () => {
     )
 }
 // export const buildPanel = (item) => {
-  
+
 //   const panel = item.panel[0]
 
 //   if (panel.fieldGroupName === "OaMegaMenu_OaMenu_nav_Panel_TextLinks") {
@@ -93,10 +93,9 @@ const Home = () => {
 // //       ...HeroFields
 // //       }
 // //     }
-    
+
 // //   }
-  
+
 // // }
 // // `
 export default Home
-

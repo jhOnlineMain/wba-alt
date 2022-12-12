@@ -15,29 +15,23 @@ module.exports = {
     siteUrl: `https://ordinaryagency.com.au`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `http://wba.local/graphql`,
+        url: `https://ordinaryseo.com.au/wbawp/graphql`,
         html: {
           useGatsbyImage: true,
         },
-        schema : { 
+        schema : {
           perPage: 50,
           timeout: 60000,
 
         },
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}/src/images`,
-    //   },
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
