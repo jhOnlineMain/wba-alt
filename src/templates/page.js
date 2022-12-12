@@ -4,12 +4,10 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import parse from "html-react-parser"
 
-
-
 export default function PageTemplate({data}) {
     console.log(data)
     const post = data.wpPost
-  
+
     return (
         <Layout>
             <Seo title={post.title} ></Seo>
@@ -31,5 +29,3 @@ export const query = graphql`
         }
     }
 `
-
-

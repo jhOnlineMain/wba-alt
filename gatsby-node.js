@@ -19,6 +19,61 @@ const MONTH = 11;
 
 exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) => {
 
+
+  const AllGradesJuniorDomestic = await fetch(`https://api.playhq.com/v1/seasons/b9c36620-a2df-4e9d-8e30-e600985f11f8/grades`, {
+      method: 'get',
+      headers: {
+          'x-api-key': '97c0b8e9-60f4-4015-91fb-d9958501a679',
+          'x-phq-tenant': 'bwa'
+      }
+  });
+
+  const AllGradesJuniorDomesticData = await AllGradesJuniorDomestic.json();
+  const AllGradesJuniorDomesticDataArray = [];
+  AllGradesJuniorDomesticData.data.forEach(async (item) => {
+          const grade = item;
+          const gradeIDNew = item["id"];
+          const gradeName = item["name"];
+          const gradeURL = item["url"];
+          createNode({
+              ...grade,
+              id: gradeIDNew,
+              name: gradeName,
+              internal: {
+                  type: 'JuniorDomesticGrades',
+                  contentDigest: createContentDigest(grade)
+              }
+          });
+          AllGradesJuniorDomesticDataArray.push(gradeIDNew);
+            const responseLadder = await fetch(`https://api.playhq.com/v1/grades/${gradeIDNew}/ladder`, {
+                method: 'get',
+                headers: {
+                    'x-api-key': '97c0b8e9-60f4-4015-91fb-d9958501a679',
+                    'x-phq-tenant': 'bwa'
+                }
+            });
+            const responseLadderJSON = await responseLadder.json();
+
+            responseLadderJSON.data.forEach(async (item) => {
+                    const grade = item;
+                    const gradeLadder = item["ladders"];
+                    const gradeLadderSingle = item["grade"];
+                    console.log("item is: ",  item);
+                    createNode({
+                        ...item,
+                        id: gradeLadderSingle["id"],
+                        name: gradeLadderSingle["name"],
+                        internal: {
+                            type: 'Ladders',
+                            contentDigest: createContentDigest(item)
+                        }
+                    });
+
+
+  });
+
+});
+
     const responseseasonteams = await fetch(`https://api.playhq.com/v1/seasons/3bb1ab14-ae7f-4ee0-85af-ef4cfd459222/teams`, {
         method: 'get',
         headers: {
@@ -31,7 +86,6 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
     const gradeIDArray = [];
     datast.data.forEach((item) => {
         const grade = item["grade"];
-   //     console.log("grade: ", grade);
         if(grade !== null) {
             const gradeID = grade["id"];
             const gradeName = grade["name"];
@@ -126,7 +180,6 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
     data_MonMenCFixtures.data.forEach((item) => {
 
         const gameStatus = item["status"];
-//        console.log("item: ", item);
 
         if(gameStatus === "FINAL") {
           const competitors = item["competitors"][0];
@@ -183,31 +236,31 @@ exports.createPages = async gatsbyUtilities => {
   if (!pages.length) {
     console.log('pages=false')
     return
-    
+
   }
 
   await createPages(pages, {gatsbyUtilities})
 }
 
-  const createPages = async ( pages, {gatsbyUtilities}) => { 
+  const createPages = async ( pages, {gatsbyUtilities}) => {
     console.log('createPages pages:   ')
     console.log(pages)
 
     Promise.all(
-      pages.map( ( page ) => 
+      pages.map( ( page ) =>
         gatsbyUtilities.actions.createPage({
           path: page.uri,
           component: path.resolve(`./src/templates/page.js`),
           // values in the context object are passed in as variables to page queries
           context: {
-            title: page.title, 
+            title: page.title,
             slug: page.slug,
           },
         })
       )
     )
 }
-  
+
 
 
 async function getPages({ graphql, reporter }) {
@@ -222,7 +275,7 @@ async function getPages({ graphql, reporter }) {
         }
     }
   `)
-  
+
   if (pagesQuery.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -236,5 +289,3 @@ async function getPages({ graphql, reporter }) {
     return pagesQuery.data.allWpPost.nodes
 
 }
-
-

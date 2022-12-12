@@ -8,7 +8,7 @@ export function HeroSplit(props) {
   console.log(props)
   const qry = props[0]
   const color1 = props.c1
-  
+
 
 return (
   /* Expects from parent
@@ -47,7 +47,7 @@ return (
                   {qry.buttons[0].label}
                 </Link>
               </div>
-              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3"> 
+              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                 <Link
                   to={qry.buttons[1].link}
                   className={"w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-" + String(color1) + "-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"}
@@ -87,7 +87,7 @@ export function HeroCard(props)  {
         }
             }
 */
-    
+
   const qry = props[0]
   const color1 = props.c1
   const color2 = props.c2
@@ -116,7 +116,7 @@ export function HeroCard(props)  {
           <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
               <div className="absolute inset-0">
                   <GatsbyImage
-                      className="h-full w-full object-cover" 
+                      className="h-full w-full object-cover"
                       image={qry.bgimage.gatsbyImage}
                       alt={qry.bgimage.altText || ""}
                       />
@@ -155,7 +155,7 @@ export const HERO_CARD_FIELDS = graphql`
           altText
         }
 
-	}  
+	}
 `
 
 export const HERO_SPLIT_FIELDS = graphql`
@@ -172,5 +172,5 @@ export const HERO_SPLIT_FIELDS = graphql`
           altText
         }
 
-	}  
+	}
 `
