@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `http://wba.local/graphql`,
+        url: `https://ordinaryseo.com.au/wbawp/graphql`,
         html: {
           useGatsbyImage: true,
         },

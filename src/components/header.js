@@ -24,7 +24,7 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { TextLinksPanel } from './navPanels'
 
-//--------------------------------------------------------This is a development test page
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -91,92 +91,56 @@ function classNames(...classes) {
 export default function Header() {
     const data = useStaticQuery(graphql`
     {
-    wba: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "wba"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    edu: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "education"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    sdc: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "sdc"}}}}}) {
-    nodes {
-      title
-      link
-    }
-    }
-    jdc: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "jdc"}}}}}) {
-    nodes {
-      title
-      link
-    }
-  }
-    wabl: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "wabl"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    nbl1: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "nbl1"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    programs: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "programs"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    sponsors: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "sponsors"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    history: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "history"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
-    camp: allWpPost(filter: {tags: {nodes: {elemMatch: {slug: {eq: "camp"}}}}}) {
-      nodes {
-        title
-        link
-      }
-    }
+      wp {
+        oaMegaMenu {
+            oa_menu {
+                panels {
+                    ... on WpOaMegaMenu_OaMenu_Panels_TextLinks {
+                        fieldGroupName
+                        title
+                        textSnippet
+                        image {
+                            gatsbyImage(width: 50, aspectRatio: 1)
+                        }
+                        subLinks {
+                            post {
+                                ... on WpPost {
+                                    title
+                                    link
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        }
     
-  }
+    }
     
     `)
 
-    const menu = {
-        wba: data.wba.nodes,
-        edu: data.edu.nodes,
-        domestic: {
-            label:"Domestic",
-            jdc:data.jdc.nodes,
-            sdc:data.sdc.nodes
-        },
-        wabl: data.wabl.nodes,
-        nbl1: data.nbl1.nodes,
-        programs:{
-            label:"Programs",
-            main:data.programs.nodes,
-            subLinks: {
-               label: "Holiday Camps", 
-               links:data.camp.nodes
-            }
-        },
-        sponsors: data.sponsors.nodes,
-        history: data.history.nodes
-    }
+    // const menu = {
+    //     wba: data.wba.nodes,
+    //     edu: data.edu.nodes,
+    //     domestic: {
+    //         label:"Domestic",
+    //         jdc:data.jdc.nodes,
+    //         sdc:data.sdc.nodes
+    //     },
+    //     wabl: data.wabl.nodes,
+    //     nbl1: data.nbl1.nodes,
+    //     programs:{
+    //         label:"Programs",
+    //         main:data.programs.nodes,
+    //         subLinks: {
+    //            label: "Holiday Camps", 
+    //            links:data.camp.nodes
+    //         }
+    //     },
+    //     sponsors: data.sponsors.nodes,
+    //     history: data.history.nodes
+    // }
     return (
         <Popover className="relative bg-white h-28">
         <div className="absolute inset-0 shadow z-30 pointer-events-none" aria-hidden="true" />
@@ -228,7 +192,7 @@ export default function Header() {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 -translate-y-1"
                       >
-                        {/* <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
+                         <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
                           <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                             {solutions.map((item) => (
                               <Link
@@ -270,7 +234,7 @@ export default function Header() {
                               ))}
                             </div>
                           </div>
-                        </Popover.Panel> */}
+                        </Popover.Panel> 
                       </Transition>
                     </>
                   )}
