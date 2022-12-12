@@ -12,7 +12,6 @@ const AboutPage = () => (
 
       <div className="container">
         <h1 >Ladders</h1>
-
         <Ladders />
       </div>
       <Link to="/">Go back to the homepage</Link>

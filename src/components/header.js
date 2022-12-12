@@ -151,9 +151,9 @@ export default function Header() {
         link
       }
     }
-    
+
   }
-    
+
     `)
 
     const menu = {
@@ -170,7 +170,7 @@ export default function Header() {
             label:"Programs",
             main:data.programs.nodes,
             subLinks: {
-               label: "Holiday Camps", 
+               label: "Holiday Camps",
                links:data.camp.nodes
             }
         },
@@ -218,7 +218,7 @@ export default function Header() {
                           aria-hidden="true"
                         />
                       </Popover.Button>
-  
+
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-200"
@@ -299,7 +299,7 @@ export default function Header() {
                           aria-hidden="true"
                         />
                       </Popover.Button>
-  
+
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-200"
@@ -398,7 +398,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-  
+
         <Transition
           as={Fragment}
           enter="duration-200 ease-out"
@@ -459,23 +459,23 @@ export default function Header() {
                   <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     Pricing
                   </Link>
-  
+
                   <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     Docs
                   </Link>
-  
+
                   <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     Company
                   </Link>
-  
+
                   <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     Resources
                   </Link>
-  
+
                   <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     Blog
                   </Link>
-  
+
                   <Link to="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     Contact Sales
                   </Link>

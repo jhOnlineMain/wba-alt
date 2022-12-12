@@ -37,7 +37,6 @@ const IndexPage = () => {
         <Layout>
 
           <HeroSplit {...blocks.hero} c1="green" />
-
           <BrandPanel {...blocks.brandPanel} c1="green" />
           <div className="nav-row">
             <NavPanels/>
