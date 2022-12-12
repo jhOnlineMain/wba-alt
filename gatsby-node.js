@@ -58,11 +58,13 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
                     const grade = item;
                     const gradeLadder = item["ladders"];
                     const gradeLadderSingle = item["grade"];
-                    console.log("item is: ",  item);
+                    console.log("gradeLadderSingle: ",  item);
+                    console.log("gradeName: ",  gradeName);
+
                     createNode({
                         ...item,
                         id: gradeLadderSingle["id"],
-                        name: gradeLadderSingle["name"],
+                        name: gradeName,
                         internal: {
                             type: 'Ladders',
                             contentDigest: createContentDigest(item)
@@ -243,9 +245,6 @@ exports.createPages = async gatsbyUtilities => {
 }
 
   const createPages = async ( pages, {gatsbyUtilities}) => {
-    console.log('createPages pages:   ')
-    console.log(pages)
-
     Promise.all(
       pages.map( ( page ) =>
         gatsbyUtilities.actions.createPage({
@@ -279,13 +278,10 @@ async function getPages({ graphql, reporter }) {
   if (pagesQuery.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
-      console.log(pages),
       pagesQuery.errors
     )
     return
   }
-    console.log('pagesQuery:  ')
-    console.log(pagesQuery)
     return pagesQuery.data.allWpPost.nodes
 
 }
