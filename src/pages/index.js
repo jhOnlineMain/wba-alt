@@ -2,8 +2,8 @@ import * as React from "react"
 import {graphql, useStaticQuery, Link} from "gatsby"
 import {HeroSplit} from "../components/hero"
 import Layout from "../components/layout"
-import { gql } from '@apollo/client'
-import {BrandPanel} from "../components/brandpanel"
+import {Popover} from "@headlessui/react"
+ import {BrandPanel} from "../components/brandpanel"
 import parse from "html-react-parser"
 import { ArrowCircleRightIcon } from "@heroicons/react/outline"
 import NavPanels from "../components/navPanels"
@@ -38,9 +38,7 @@ const IndexPage = () => {
 
           <HeroSplit {...blocks.hero} c1="green" />
           <BrandPanel {...blocks.brandPanel} c1="green" />
-          <div className="nav-row">
-            <NavPanels/>
-          </div>
+
         </Layout>
 
     )
