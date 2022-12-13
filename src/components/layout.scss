@@ -1,8 +1,8 @@
 //Here you can customize bootstrap
 $primary: #663399;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
 #gatsby-focus-wrapper {
   background: #f7f7f7;
@@ -11,7 +11,7 @@ $primary: #663399;
 .ladder-headings {
   justify-content: flex-start;
   flex-wrap: wrap;
-display: flex;
+  display: flex;
   label {
     color: #00B6B5;
     font-weight: 900;
@@ -51,12 +51,47 @@ display: flex;
 // .navbar {
 //   display: none !important;
 // }
+// Global
+.page-content {
+  background-color: whitesmoke;
+  padding: 1rem 0;
+  h3 {
+    font-size:2em;
+    margin:1rem 0;
+  }
+  p {
+    margin: 0.6rem 0;
+    .aligncenter {
+      width: fit-content;
+      margin:0 auto;
+    }
 
+  }
+// Team 
+.team-member {
+  .gatsby-image-wrapper {
+    border-radius: 110px;
+    border: 2px solid black;
+  }
+}
+}
 /* Mega menu */
 .nav-row {
   display:flex;
-  flex-flow:column nowrap;
+  flex-flow:row nowrap;
+  width:50%;
+  .dropdown {
+    padding: 10px;
+    .dropbtn {
+      span:nth-child(2) {
+        position: relative;
+        top: 5px;
+      }
+    }
+
+  }
   .dropdown-content {
+    display: none;
     width:90%;
     height:20rem;
     margin:0 auto;

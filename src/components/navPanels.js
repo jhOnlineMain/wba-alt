@@ -2,6 +2,7 @@ import * as React from "react"
 import {graphql, Link, useStaticQuery } from "gatsby"
 import { ArrowCircleRightIcon, ChevronDownIcon } from "@heroicons/react/outline"
 import {GatsbyImage} from "gatsby-plugin-image"
+import $ from "jquery"
 
 
 const NavPanels = () => {
@@ -34,6 +35,14 @@ const NavPanels = () => {
     }
     `)
     const panels = qry.wp.oaMegaMenu.oa_menu.panels
+    $(document).ready(function() {
+        $(".dropbtn").trigger(function() {
+            $("dropdown-content").toggle();
+            $("dropdown-content").hide();
+
+        });
+    });
+
     return (
     panels.map( function(panel) { 
             if (panel.fieldGroupName === "OaMegaMenu_OaMenu_Panels_TextLinks") {
@@ -43,7 +52,7 @@ const NavPanels = () => {
                             
                             <span>{panel.title}</span>
 
-                            <span className="ml-1 mt-1 h-6 w-6 float-right items-center down-icon">
+                            <span className="h-4 w-4 float-right items-center down-icon">
                                 <ChevronDownIcon/>
                             </span> 
                         </button>

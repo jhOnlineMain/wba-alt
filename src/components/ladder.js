@@ -1,62 +1,60 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 
-const Ladder = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allLadderResultsMondayMenD {
-        edges {
-          node {
-            id
-            name
-            percentage
-            played
-            pointsAgainst
-            pointsFor
-            ranking
-            won
-            drawn
-            lost
-            forfeits
-            disqualifications
-            competitionPoints
-            children {
-              id
-            }
-            byes
-            adjustments
-          }
-        }
-      }
-     allLadderResultsMondayMenC {
-        edges {
-          node {
-            id
-            name
-            percentage
-            played
-            pointsAgainst
-            pointsFor
-            ranking
-            won
-            lost
-            drawn
-            forfeits
-            disqualifications
-            competitionPoints
-            children {
-              id
-            }
-            byes
-            adjustments
-            lost
-          }
-        }
-      }
-    }
-  `)
+// const Ladder = () => {
+//   const data = useStaticQuery(graphql`
+//     query {
+//       allLadderResultsMondayMenD {
+//         edges {
+//           node {
+//             id
+//             name
+//             percentage
+//             played
+//             pointsAgainst
+//             pointsFor
+//             ranking
+//             won
+//             drawn
+//             lost
+//             forfeits
+//             disqualifications
+//             competitionPoints
+//             children {
+//               id
+//             }
+//             byes
+//             adjustments
+//           }
+//         }
+//       }
+//      allLadderResultsMondayMenC {
+//         edges {
+//           node {
+//             id
+//             name
+//             percentage
+//             played
+//             pointsAgainst
+//             pointsFor
+//             ranking
+//             won
+//             lost
+//             drawn
+//             forfeits
+//             disqualifications
+//             competitionPoints
+//             children {
+//               id
+//             }
+//             byes
+//             adjustments
+//             lost
+//           }
+//         }
+//       }
+//     }
+//   `)
 const Ladder = () => {
   const data = useStaticQuery(graphql`
     query {

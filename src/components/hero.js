@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Link, GatsbyImage, graphql } from "gatsby"
-import { gql } from '@apollo/client'
+import { Link, graphql } from "gatsby"
+import {GatsbyImage} from "gatsby-plugin-image"
 
 
 

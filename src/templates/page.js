@@ -11,8 +11,8 @@ export default function PageTemplate({data}) {
     return (
         <Layout>
             <Seo title={post.title} ></Seo>
-            <div className="w-1/2 mx-auto" >
-                <h5> {post.title} </h5>
+            <div className="w-1/2 mx-auto page-content">
+                <h3> {post.title} </h3>
                 <p> { parse(post.content) } </p>
             </div>
         </Layout>
