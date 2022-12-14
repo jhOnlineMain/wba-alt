@@ -51,12 +51,14 @@ $primary: #663399;
 // .navbar {
 //   display: none !important;
 // }
-// Global
+
+// ----Global
 .page-content {
   background-color: whitesmoke;
   padding: 1rem 0;
   h3 {
-    font-size:2em;
+    font-size:3em;
+    font-weight: bold;
     margin:1rem 0;
   }
   p {
@@ -65,15 +67,29 @@ $primary: #663399;
       width: fit-content;
       margin:0 auto;
     }
-
   }
-// Team 
+  figure.wp-block-image {
+    margin:1.2rem auto;
+  }
+  h5 {
+    font-weight: bold;
+    font-size:1.2em;
+  }
+}
+//----Content page specific
+//--Team 
+
 .team-member {
   .gatsby-image-wrapper {
     border-radius: 110px;
     border: 2px solid black;
   }
 }
+//WBA Staff 
+.staff-list {
+  li {
+    font-weight: bold;
+  }
 }
 /* Mega menu */
 .nav-row {
@@ -122,9 +138,13 @@ $primary: #663399;
       .links {
         grid-column: 2 / span 2;
         padding-top: 1rem;
+        display: flex;
+        flex-flow: column wrap;
+        max-height: 16rem;
+
         li {
           list-style: none;
-          width:fit-content;
+          width:50%;
           padding: 4px 2px;
           .list-icon-wrap {
             display:inline-block;

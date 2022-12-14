@@ -58,7 +58,7 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
                     const grade = item;
                     const gradeLadder = item["ladders"];
                     const gradeLadderSingle = item["grade"];
-                    console.log("item is: ",  item);
+                    //console.log("item is: ",  item);
                     createNode({
                         ...item,
                         id: gradeLadderSingle["id"],
@@ -224,14 +224,14 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
     });
 };
 
+//------------------------------Create Content Pages`````````````````````````````//
+
 const {graphql} = require('gatsby')
 const path = require(`path`)
 
 exports.createPages = async gatsbyUtilities => {
 
   const pages = await getPages(gatsbyUtilities)
-  console.log('pages:  ')
-  console.log(pages)
 
   if (!pages.length) {
     console.log('pages=false')
@@ -243,8 +243,6 @@ exports.createPages = async gatsbyUtilities => {
 }
 
   const createPages = async ( pages, {gatsbyUtilities}) => {
-    console.log('createPages pages:   ')
-    console.log(pages)
 
     Promise.all(
       pages.map( ( page ) =>
@@ -284,8 +282,74 @@ async function getPages({ graphql, reporter }) {
     )
     return
   }
-    console.log('pagesQuery:  ')
-    console.log(pagesQuery)
+    // console.log('pagesQuery:  ')
+    // console.log(pagesQuery)
     return pagesQuery.data.allWpPost.nodes
 
 }
+
+//------------------------------Create News Pages`````````````````````````````//
+
+exports.createPages = async gatsbyUtilities => {
+    // Query our posts from the GraphQL server
+    const posts = await getNewsPosts(gatsbyUtilities)
+  
+    // If there are no posts in WordPress, don't do anything
+    if (!posts.length) {
+      return
+    }
+  
+    // If there are posts, create pages for them
+    await createNewsPostPages( posts, {gatsbyUtilities })
+  }
+
+  const createNewsPostPages = async (posts, {gatsbyUtilities}) =>
+  Promise.all(
+    posts.map((post) =>
+      // createPage is an action passed to createPages
+      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
+      gatsbyUtilities.actions.createPage({
+        // Use the WordPress uri as the Gatsby page path
+        // This is a good idea so that internal links and menus work 👍
+        path: post.uri,
+
+        // use the blog post template as the page component
+        component: path.resolve(`./src/templates/news-post.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // we need to add the post id here
+          // so our blog post template knows which blog post
+          // the current page is (when you open it in a browser)
+          id: post.id,
+        },
+      })
+    )
+  )
+
+  async function getNewsPosts({ graphql, reporter }) {
+    const graphqlResult = await graphql(/* GraphQL */ `
+      query NewsPostArchive {
+        allWpPost(
+            filter: {categories: {nodes: {elemMatch: {slug: {eq: "news"}}}}}
+            limit: 20
+            ) {
+                nodes {
+                    id
+                    uri
+                }
+            }
+      }
+    `)
+    console.log(graphqlResult)
+    if (graphqlResult.errors) {
+      reporter.panicOnBuild(
+        `There was an error loading your blog posts`,
+        graphqlResult.errors
+      )
+      return
+    }
+  
+    return graphqlResult.data.allWpPost.nodes
+  }
