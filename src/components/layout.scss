@@ -55,11 +55,11 @@ $primary: #663399;
 // ----Global
 .page-content {
   background-color: whitesmoke;
-  padding: 1rem 0;
+  padding: 2rem 0;
   h3 {
     font-size:3em;
     font-weight: bold;
-    margin:1rem 0;
+    margin:1rem 0 3.5rem 0;
   }
   p {
     margin: 0.6rem 0;
@@ -75,8 +75,18 @@ $primary: #663399;
     font-weight: bold;
     font-size:1.2em;
   }
+  .wp-element-button {
+    color: whitesmoke;
+    display: block;
+    width: fit-content;
+    padding:12px 15px;
+    margin: 12px 0;
+    background-color: #1a4548;
+  }
 }
+
 //----Content page specific
+
 //--Team 
 
 .team-member {
@@ -128,6 +138,7 @@ $primary: #663399;
           grid-column: 2;
           h2 {
             font-weight: bold;
+            font-size: 1.2em;
           }
           p {
             margin-top:0.5rem;
@@ -141,27 +152,40 @@ $primary: #663399;
         display: flex;
         flex-flow: column wrap;
         max-height: 16rem;
-
-        li {
-          list-style: none;
-          width:50%;
-          padding: 4px 2px;
-          .list-icon-wrap {
-            display:inline-block;
-            position: relative;
-            top:6px;
-            left:5px;
-          }
-          .list-link-wrap {
-            margin-left: 5px;
-            margin-bottom: 2px;
-          }
-        }
-        :hover {
-          background-color: lightgray;
-        }
+      }
+      .panel-cat1 {
+        grid-column:2;
+      }
+      .panel-cat2 {
+        grid-column:3;
       }
     }
   }
+  }
+}
+.nav-row {
+  li {
+    list-style: none;
+    width:50%;
+    padding: 4px 2px;
+    .list-icon-wrap {
+      display:inline-block;
+      position: relative;
+      top:6px;
+      left:5px;
+    }
+    .list-link-wrap {
+      margin-left: 5px;
+      margin-bottom: 2px;
+    }
+  }
+  li:hover {
+    background-color: lightgray;
+  }
+  .panel-grid.split {
+    h6 {
+      font-weight: bold;
+
+    }
   }
 }

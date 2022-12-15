@@ -30,7 +30,6 @@ const BlogPostTemplate = ({ data }) => {
   return (
     <Layout>
       <Seo title={newsPost.title} description={newsPost.excerpt} />
-
       <article
         className="blog-post"
         itemScope

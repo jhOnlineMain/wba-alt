@@ -8,7 +8,6 @@ import Navbar from "./navbar"
 import Header from "./header"
 import MegaMenu from "./megamenu"
 
-
 import "./layout.scss"
 
 const Layout = ({ children }) => {

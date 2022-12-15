@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import parse from "html-react-parser"
+import "../styles/wp-style.css"
 
 export default function PageTemplate({data}) {
     console.log(data)

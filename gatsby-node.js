@@ -224,7 +224,7 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
     });
 };
 
-//------------------------------Create Content Pages`````````````````````````````//
+//------------------------------Create Pages-------------------------------//
 
 const {graphql} = require('gatsby')
 const path = require(`path`)
@@ -232,15 +232,18 @@ const path = require(`path`)
 exports.createPages = async gatsbyUtilities => {
 
   const pages = await getPages(gatsbyUtilities)
+  const newsPost = await getNewsPosts(gatsbyUtilities)
 
   if (!pages.length) {
     console.log('pages=false')
     return
-
-  }
+    }
 
   await createPages(pages, {gatsbyUtilities})
+  await createNewsPostPages(newsPost, {gatsbyUtilities})
 }
+
+//------------------------------Content Pages------------------------------//
 
   const createPages = async ( pages, {gatsbyUtilities}) => {
 
@@ -288,20 +291,7 @@ async function getPages({ graphql, reporter }) {
 
 }
 
-//------------------------------Create News Pages`````````````````````````````//
-
-exports.createPages = async gatsbyUtilities => {
-    // Query our posts from the GraphQL server
-    const posts = await getNewsPosts(gatsbyUtilities)
-  
-    // If there are no posts in WordPress, don't do anything
-    if (!posts.length) {
-      return
-    }
-  
-    // If there are posts, create pages for them
-    await createNewsPostPages( posts, {gatsbyUtilities })
-  }
+//------------------------------News Pages---------------------------------//
 
   const createNewsPostPages = async (posts, {gatsbyUtilities}) =>
   Promise.all(
