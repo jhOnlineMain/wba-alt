@@ -31,12 +31,12 @@ const BlogPostTemplate = ({ data }) => {
     <Layout>
       <Seo title={newsPost.title} description={newsPost.excerpt} />
       <article
-        className="blog-post"
+        className="news-page"
         itemScope
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{parse(newsPost.title)}</h1>
+          <h3 itemProp="headline">{parse(newsPost.title)}</h3>
 
           <p>{newsPost.date}</p>
 

@@ -53,7 +53,7 @@ $primary: #663399;
 // }
 
 // ----Global
-.page-content {
+.page-content, .news-page {
   background-color: whitesmoke;
   padding: 2rem 0;
   h3 {
@@ -146,7 +146,7 @@ $primary: #663399;
           }
         }
       }
-      .links {
+      .text-links {
         grid-column: 2 / span 2;
         padding-top: 1rem;
         display: flex;
@@ -188,4 +188,29 @@ $primary: #663399;
 
     }
   }
+}
+
+.panel-grid.text-news {
+  .news-pack-container {
+    grid-column: 3;
+    h2 {
+      font-size:1.2em;
+      font-weight:bold;
+    }
+    p {
+      font-size: 0.8em;
+    }
+    .news-pack {
+      display: flex;
+      flex-flow: column nowrap;
+      .news-post {
+        max-width: 25rem;
+        h6 {
+          font-weight: bold;
+        }
+      }
+    }
+
+  }
+
 }
