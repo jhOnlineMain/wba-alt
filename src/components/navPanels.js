@@ -198,7 +198,7 @@ const NavPanels = () => {
                                         <p>{panel.textSnippet}</p>
                                     </div>
                                 </div>
-                                <div className="panel-cat1">
+                                <div className="panel-cat1 category">
                                     <h6> {panel.cat1.label} </h6>
                                 {panel.cat1.posts.map( (navLink) => (
                                     <li key={navLink.post.title}>
@@ -214,7 +214,7 @@ const NavPanels = () => {
                                     </li>
                                 ))}
                                 </div>
-                                <div className="panel-cat2">
+                                <div className="panel-cat2 category">
                                     <h6> {panel.cat2.label} </h6>
                                 {panel.cat2.posts.map( (navLink) => (
                                     <li key={navLink.post.title}>
