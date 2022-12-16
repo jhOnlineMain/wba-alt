@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 //import Ladders from "../components/ladder"
 
-const AboutPage = () => (
+const LaddersPage = () => (
   <Layout>
     <Seo title="About Gatsby Bootsrap 5 starter" />
     <div className="container  my-5">
@@ -19,4 +19,4 @@ const AboutPage = () => (
   </Layout>
 )
 
-export default AboutPage
+export default LaddersPage
