@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Ladders from "../components/ladder"
+//import Ladders from "../components/ladder"
 
 const AboutPage = () => (
   <Layout>
@@ -12,7 +12,7 @@ const AboutPage = () => (
 
       <div className="container">
         <h1 >Ladders</h1>
-        <Ladders />
+        {/* <Ladders /> */}
       </div>
       <Link to="/">Go back to the homepage</Link>
     </div>
