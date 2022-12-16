@@ -8,14 +8,14 @@
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 
-require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`
-});
+// require('dotenv').config({
+//     path: `.env.${process.env.NODE_ENV}`
+// });
 
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
-const YEAR = 1980;
-const MONTH = 11;
+// const YEAR = 1980;
+// const MONTH = 11;
 
 // exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) => {
 
