@@ -8,6 +8,7 @@ import parse from "html-react-parser"
 import { ArrowCircleRightIcon } from "@heroicons/react/outline"
 import NavPanels from "../components/navPanels"
 import Team from "../components/team"
+import Products from "../components/products"
 //--------------------------------------------------------This is a development test page
 const Home = () => {
     const query = useStaticQuery(graphql`
@@ -41,11 +42,10 @@ const Home = () => {
           <HeroSplit {...blocks.hero} c1="green" />
 
           <BrandPanel {...blocks.brandPanel} c1="green" />
-
+          
+          <Products />
+          
           <Team />
-          <div className="nav-row">
-            <NavPanels/>
-          </div>
         
         </Layout>
 

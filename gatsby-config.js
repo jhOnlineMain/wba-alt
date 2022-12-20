@@ -7,6 +7,10 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Waneroo Basketball Association`,
@@ -30,6 +34,14 @@ module.exports = {
           timeout: 60000,
 
         },
+      },
+    },
+    {
+      resolve: "gatsby-source-shopify",
+      options: {
+        password: process.env.SHOPIFY_ADMIN_ACCESS_TOKEN,
+        storeUrl: process.env.GATSBY_MYSHOPIFY_URL,
+        //salesChannel: process.env.SHOPIFY_APP_ID, // Optional but recommended
       },
     },
     `gatsby-transformer-sharp`,
