@@ -1,13 +1,11 @@
 import * as React from "react"
-import {graphql, useStaticQuery, Link} from "gatsby"
-import {HeroSplit} from "../components/hero"
 import Layout from "../components/layout"
-import {Popover} from "@headlessui/react"
- import {BrandPanel} from "../components/brandpanel"
-import parse from "html-react-parser"
-import { ArrowCircleRightIcon } from "@heroicons/react/outline"
-import NavPanels from "../components/navPanels"
 import Seo from "../components/seo"
+import { graphql, useStaticQuery } from "gatsby"
+import { HeroSplit } from "../components/hero"
+import { BrandPanel } from "../components/brandpanel"
+import Products from "../components/products"
+
 
 const IndexPage = () => {
   const query = useStaticQuery(graphql`
@@ -37,7 +35,10 @@ const IndexPage = () => {
         <Layout>
 
           <HeroSplit {...blocks.hero} c1="green" />
+
           <BrandPanel {...blocks.brandPanel} c1="green" />
+
+          <Products />
 
         </Layout>
 
