@@ -46,6 +46,7 @@ import {GatsbyImage} from "gatsby-plugin-image"
 
 
 const products = qry.product.nodes
+console.log(products)
     return (
       <div className="bg-white">
         <div className="py-16 sm:py-24 lg:max-w-7xl lg:mx-auto lg:px-8">
@@ -64,15 +65,7 @@ const products = qry.product.nodes
               >
                 {products.map(function(product, index)  {
 
-                    let price = "$"
-                    if (product.priceRangeV2.min !== product.priceRangeV2.max ) {
-                        let priceMin = product.priceRangeV2.min
-                        let priceMax = product.priceRangeV2.max
-                        price = "$" + String(priceMin) + " - $" + String(priceMax)
-                    }
-                    else {
-                        price = "$" + String(product.priceRangeV2.max)
-                    }
+                    let price = "From $" + String(product.priceRangeV2.min.amount)
                     console.log(price)
                     return (
 
@@ -92,7 +85,7 @@ const products = qry.product.nodes
                                     {product.title}
                                 </a>
                                 </h3>
-                                <p className="mt-1 text-gray-900">{product.price}</p>
+                                <p className="mt-1 text-gray-900">{price}</p>
                             </div>
                         </div>
                     </li>
